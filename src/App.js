@@ -1,25 +1,70 @@
-import logo from './logo.svg';
 import './App.css';
+import {useEffect} from 'react';
+import {SearchIcon} from './search.svg'
+// a93d4a2f
+const API_URL = 'http://www.omdbapi.com/?i=tt3896198&apikey=eabf57e1&';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const App =()=> {
+
+const searchMovies =async (title)=>{
+  const response =await fetch(`${API_URL}$s=${title}`);
+  const data = await response.json();
+  console.log(data.Search);
+}
+
+  useEffect(()=>{
+searchMovies();
+}, [])
+
+  
 }
 
 export default App;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// const [counter, setCounter] = useState(0)
+// useEffect(()=>{
+//  setCounter(100);
+// },[])
+// return(
+//    <div className='App'>
+//    <button onClick={() => setCounter((prevCount)=> prevCount-1)}>-</button>
+//    <h1>{counter}</h1>
+//    <button onClick={()=> setCounter((prevCount)=> prevCount +1)}>+</button>
+// </div>
+//  )
